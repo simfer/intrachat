@@ -4,8 +4,9 @@ const app = express(); // create express app
 const chromium = require('chromium');
 const { execFile } = require('child_process');
 const APPLICATION_PORT = 4792; //porta da cambiare per l'applicazione
+const SERVER_HOST = "localhost"
 
-execFile(chromium.path, [`http://localhost:${APPLICATION_PORT}`], err => {
+execFile(chromium.path, [`http://${SERVER_HOST}:${APPLICATION_PORT}`], err => {
   console.log('Application started!');
 });
 

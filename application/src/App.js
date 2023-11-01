@@ -5,10 +5,11 @@ import Home from './components/Home';
 import ChatPage from './components/ChatPage';
 import socketIO from 'socket.io-client';
 
+const SERVER_HOST = "localhost"
 const SERVER_PORT = 4791; //porta da cambiare per il server
 const APPLICATION_PORT = 4792; //porta da cambiare per l'applicazione
 
-const socket = socketIO.connect(`http://localhost:${SERVER_PORT}`);
+const socket = socketIO.connect(`http://${SERVER_HOST}:${SERVER_PORT}`);
 
 function sendNotification(message, user) {
   console.log("notifications")
@@ -18,7 +19,7 @@ function sendNotification(message, user) {
     body: `@${user}: ${message}`
   })
   notification.onclick = () => function () {
-    window.open(`http://localhost:${APPLICATION_PORT}/chat`)
+    window.open(`http://${SERVER_HOST}:${APPLICATION_PORT}/chat`)
   }
 }
 
